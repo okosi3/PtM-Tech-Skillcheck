@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="cc1701fc-f374-4681-a3ec-29a5ce8d05e8">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="UUID" type="IdTableFieldDefinition" value="fb1093fc-0dca-4fd3-98a0-0dde2f5aa65f" />
+        <field name="Name" type="NameTableFieldDefinition" value="PTM_Tavern_Guard" />
+        <field name="InitialWeaponSet" type="EnumerationTableFieldDefinition" value="Melee" enumeration_type_name="WeaponSet" version="1" />
+        <field name="1" type="StatReferenceTableFieldDefinition" value="WPN_Club" />
+        <field name="2" type="StatReferenceTableFieldDefinition" value="ARM_Leather_Body" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,21 @@
+This file describes the PTM SkillCheck additions:
+
+Dialogue: 
+    Tavern_Guard_000
+        Sets 3 flags (all unique)
+            PTM_Tavern_Guard_Upset: flag set when player fails insight skill check, npc will no longer continue dialog
+            PTM_Tavern_Guard_Quest: flag set when player passes insight skill check but did not progress far enough to accept quest 
+            PTM_Tavern_Guard_AcceptQuest: flag set when player accepts quest 
+    
+Scripts:
+    PTM_Tavern_Door_Script
+        Init: 
+            sets Tavern_Door_Main to be initally closed and locked
+        KB: 
+            locks/unlocks and open/close the door based on Tavern_Door_Button 
+    PTM_Tavern_Door_BoxTrigger_Script
+        Init: 
+            sets Tavern_Door_Button to be initally uninteractable (before perception check)
+        KB: 
+            does a perception check when the player enters boxtrigger and disables the boxtrigger for that player; event called PTM_TavernButtonPerceptionCheck
+            if successful, sets player interaction with Tavern_Door_Button to true

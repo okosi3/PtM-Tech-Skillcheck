@@ -1,0 +1,7 @@
+new equipment "PTM_Tavern_Guard"
+add initialweaponset "Melee"
+add equipmentgroup
+add equipment entry "WPN_Club"
+add equipmentgroup
+add equipment entry "ARM_Leather_Body"
+

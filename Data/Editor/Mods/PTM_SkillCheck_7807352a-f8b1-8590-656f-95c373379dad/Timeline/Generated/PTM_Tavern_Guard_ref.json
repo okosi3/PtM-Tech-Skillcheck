@@ -1,0 +1,54 @@
+{
+  "Flags": {
+    "86eb2d67-adb9-8866-cea4-6e1336da8539": [
+      "IMPOSSIBLE",
+      "PTM_Tavern_Guard_Quest"
+    ],
+    "af668d4c-5c51-ee5d-6751-8c795f8988ce": [
+      "IMPOSSIBLE",
+      "PTM_Tavern_Guard_Quest",
+      "PTM_Tavern_Guard_Upset"
+    ],
+    "36e6ff60-5532-7d17-5424-9675cadf90e2": [
+      "IMPOSSIBLE",
+      "PTM_Tavern_Guard_Upset"
+    ],
+    "2609504a-31c4-bfad-6764-608aa9cb9c5f": [
+      "IMPOSSIBLE"
+    ],
+    "54b3cc42-5024-64af-e0d0-8e8cdf71cada": [
+      "IMPOSSIBLE"
+    ],
+    "d516c690-6a48-6c92-8646-0a0fbd98853a": [
+      "IMPOSSIBLE"
+    ],
+    "e07a2019-809b-b56d-92c5-5ce17aabb2a5": [
+      "IMPOSSIBLE"
+    ],
+    "f8cdee1d-abb6-d828-b558-136be119296b": [
+      "IMPOSSIBLE"
+    ],
+    "09ed17a2-55c5-467c-35e5-53ae84d8c05e": [
+      "IMPOSSIBLE"
+    ],
+    "73b0405b-e8d4-b283-6af8-23a2712dd879": [
+      "IMPOSSIBLE"
+    ],
+    "c1b653bc-e7d4-8d08-aedc-b1b5724c299d": [
+      "IMPOSSIBLE"
+    ]
+  },
+  "Lines": {
+    "86eb2d67-adb9-8866-cea4-6e1336da8539": "Still have da note if ya wanna give it to da guy wit da top hat inside.",
+    "af668d4c-5c51-ee5d-6751-8c795f8988ce": "Eh? No one 'llowed inside. ",
+    "36e6ff60-5532-7d17-5424-9675cadf90e2": "Bugger off, before I have to bash ya head in.",
+    "2609504a-31c4-bfad-6764-608aa9cb9c5f": "Scram!",
+    "54b3cc42-5024-64af-e0d0-8e8cdf71cada": "Mind givin' it to da guy with da top hat inside? He owes me money for da gig last week.",
+    "d516c690-6a48-6c92-8646-0a0fbd98853a": "<i>You notice a note sticking out of the guard's pocket.<\/i>",
+    "e07a2019-809b-b56d-92c5-5ce17aabb2a5": "Uh what note? Ah this one, was meant to give it to da guy inside but forgot to. ",
+    "f8cdee1d-abb6-d828-b558-136be119296b": "<i>You can't really tell anything else.<\/i>",
+    "09ed17a2-55c5-467c-35e5-53ae84d8c05e": "Off ya pop.",
+    "73b0405b-e8d4-b283-6af8-23a2712dd879": "I said scram!",
+    "c1b653bc-e7d4-8d08-aedc-b1b5724c299d": "Then bugger off, will ya?"
+  }
+}
