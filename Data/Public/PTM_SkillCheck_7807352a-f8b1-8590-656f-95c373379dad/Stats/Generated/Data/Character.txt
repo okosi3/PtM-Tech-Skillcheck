@@ -1,0 +1,9 @@
+new entry "PTM_Tavern_Guard"
+type "Character"
+using "_HalfElf"
+data "Strength" "15"
+data "Dexterity" "14"
+data "Constitution" "14"
+data "Charisma" "12"
+data "Vitality" "20"
+

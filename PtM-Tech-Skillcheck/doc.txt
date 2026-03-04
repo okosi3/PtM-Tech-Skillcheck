@@ -1,18 +1,34 @@
 This file describes the PTM SkillCheck additions:
 
-Dialogue: 
+World Outliner:
     Tavern_Guard_000
+        Located: front of Building_Tavern 
+        Dialogue: PTM_Tavern_Guard
+        Stats: HalfElf_Melee
+        Equipment: PTM_Tavern_Guard
+        Has a pickpocketable key (PTM_TAVERN_KEY) that opens Tavern_Door_Main
+    Tavern_Button_BoxTrigger
+        Located: behind Building_Tavern
+        Connected to PTM_Tavern_Door_BoxTrigger_Script
+    Tavern_Door_Button 
+        Located: behind Building_Tavern
+        Connected to PTM_Tavern_Door_Script
+
+Dialogue: 
+    PTM_Tavern_Guard 
+        Designed for Tavern_Guard_000
         Sets 3 flags (all unique)
             PTM_Tavern_Guard_Upset: flag set when player fails insight skill check, npc will no longer continue dialog
             PTM_Tavern_Guard_Quest: flag set when player passes insight skill check but did not progress far enough to accept quest 
-            PTM_Tavern_Guard_AcceptQuest: flag set when player accepts quest 
+            PTM_Tavern_Guard_AcceptQuest: flag set when player accepts quest (this flag also opens the tavern door)
     
 Scripts:
     PTM_Tavern_Door_Script
         Init: 
             sets Tavern_Door_Main to be initally closed and locked
         KB: 
-            locks/unlocks and open/close the door based on Tavern_Door_Button 
+            locks/unlocks and open/close the door based on Tavern_Door_Button interaction
+            always opens and unlocks door if the flag PTM_Tavern_Guard_AcceptQuest is set
     PTM_Tavern_Door_BoxTrigger_Script
         Init: 
             sets Tavern_Door_Button to be initally uninteractable (before perception check)
