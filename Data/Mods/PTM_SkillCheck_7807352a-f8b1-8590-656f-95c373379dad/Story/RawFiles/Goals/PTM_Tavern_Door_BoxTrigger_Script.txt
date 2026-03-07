@@ -1,36 +1,30 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-SetCanInteract("Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21", 0);
+// Set button to be initally uninteractable
+SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 0);
 KBSECTION
 /// Script for tavern button perception check
 /// 	Button id: baad8590-056a-4e12-9d9d-201d15051a21
 /// 	BoxTrigger id: 294c4e93-c08f-4d4a-934f-9118bd022286
 
-// Perception check if player enters boxtrigger
-IF
-    CharacterEnteredTrigger(_Character, "Tavern_Button_BoxTrigger_294c4e93-c08f-4d4a-934f-9118bd022286")
-    AND
-    IsPlayer(_Character)
-    AND
-    NOT DB_TavernButton_CheckDone(_Character) // Prevents future triggers
-THEN
-    DB_TavernButton_CheckDone(_Character);
-    PROC_TrySkillCheck(
-        _Character,
-        "Tavern_Button_BoxTrigger_294c4e93-c08f-4d4a-934f-9118bd022286",
-        "Perception",
-        10,
-        "PTM_TavernButtonPerceptionCheck"
-    );
+//REGION RevealButton
 
+// Perception check if player enters boxtrigger
+IF 
+EnteredTrigger(_Player, (TRIGGER)Tavern_Button_BoxTrigger_294c4e93-c08f-4d4a-934f-9118bd022286)
+AND
+DB_Players(_Player)
+THEN
+SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1);
+RequestPassiveRoll(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, "Passive", "Perception", (DIFFICULTYCLASS)HiddenPerception_Trivial_7d16b9fd-d3c3-4693-9d50-ae44b962b4c4, 0, "PTM_TavernButtonPerceptionCheck");
 
 // Result handling
-PROC
-	PROC_RollResult("PTM_TavernButtonPerceptionCheck", _Character, "Tavern_Button_BoxTrigger_294c4e93-c08f-4d4a-934f-9118bd022286", 1)
-THEN
-	DB_TavernButton_Revealed();
-    SetCanInteract("Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21", 1);
+PROC 
+PROC_RollResult("PTM_TavernButtonPerceptionCheck", _Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
+THEN 
+SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1);
+PROC_PlayPerceptionRevealEffect(Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, "PTM_TavernButtonPerceptionCheck");
 
 //END_REGION
 EXITSECTION

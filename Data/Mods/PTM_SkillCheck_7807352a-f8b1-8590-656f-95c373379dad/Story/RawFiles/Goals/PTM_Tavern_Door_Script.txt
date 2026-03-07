@@ -2,61 +2,56 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 // Set door to be initally closed and locked
-PROC_ItemCloseAndLock(
-        Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5,
-        "PTM_Tavern_Main_Door"
-    );
+PROC_ItemCloseAndLock((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, "PTM_Tavern_Main_Door");
 KBSECTION
 /// Script for tavern button to open tavern main door
 /// 	Button id: baad8590-056a-4e12-9d9d-201d15051a21
 /// 	Door id: 545ec410-a068-404d-86f1-3566223c76d5
 
+//REGION TavernDoor
+
+/// Quest accepted so always open door
+IF
+UseFinished(_Player, (ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
+//AND
+//FlagSet((FLAG)PTM_Tavern_Guard_AcceptQuest, _, _)
+THEN
+PROC_ItemUnlockAndOpen((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
+
 /// Open if locked
 IF
-    UseFinished(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
+UseFinished(_Player, (ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
 AND
-    IsLocked(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 1)
+IsLocked((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 1)
+//AND
+//NOT FlagSet((FLAG)PTM_Tavern_Guard_AcceptQuest, _, _)
 THEN
-    PROC_ItemUnlockAndOpen(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
+PROC_ItemUnlockAndOpen((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
 
 
 /// Close and lock if open (and did not pass dialogue yet)
 IF
-    UseFinished(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
+UseFinished(_Player, (ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
 AND
-    IsOpened(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 1)
+IsOpened((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 1)
 AND
-    IsLocked(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
-AND 
-	 NOT DB_GlobalFlag("PTM_Tavern_Guard_AcceptQuest")
+IsLocked((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
+//AND 
+//NOT FlagSet((FLAG)PTM_Tavern_Guard_AcceptQuest, _, _)
 THEN
-    PROC_ItemCloseAndLock(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, "PTM_Tavern_Main_Door");
+PROC_ItemCloseAndLock((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, "PTM_Tavern_Main_Door");
 
 /// Open if closed and unlocked
 IF
-    UseFinished(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
+UseFinished(_Player, (ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
 AND
-    IsOpened(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
+IsOpened((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
 AND
-    IsLocked(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
+IsLocked((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 0)
+//AND
+//NOT FlagSet((FLAG)PTM_Tavern_Guard_AcceptQuest, _, _)
 THEN
-    PROC_ItemUnlockAndOpen(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
-
-// Open if dialogue option flag is true
-IF
-    UseFinished(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
-AND
-    IsLocked(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5, 1)
-THEN
-    PROC_ItemUnlockAndOpen(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
-
-/// Quest accepted so always open door
-IF
-    UseFinished(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1)
-AND
-    DB_GlobalFlag("PTM_Tavern_Guard_AcceptQuest")
-THEN
-    PROC_ItemUnlockAndOpen(Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
+PROC_ItemUnlockAndOpen((ITEM)Tavern_Door_Main_545ec410-a068-404d-86f1-3566223c76d5);
 
 //END_REGION
 EXITSECTION
