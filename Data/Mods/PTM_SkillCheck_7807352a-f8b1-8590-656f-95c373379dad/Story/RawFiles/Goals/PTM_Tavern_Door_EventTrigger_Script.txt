@@ -1,22 +1,30 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-// Set button to be initally uninteractable
-SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 0);
+
 KBSECTION
 /// Script for tavern button perception check
 /// 	Button id: baad8590-056a-4e12-9d9d-201d15051a21
-/// 	BoxTrigger id: 294c4e93-c08f-4d4a-934f-9118bd022286
+/// 	EventTrigger id: f8bedf98-d9fe-470d-b4dc-ae579bd44d23
 
-//REGION RevealButton
+//REGION RevealButton TavernDoor
 
-// Perception check if player enters boxtrigger
+// Player already accepted quest so disable perception check and button
+IF
+FlagSet((FLAG)PTM_Tavern_Guard_AcceptQuest_a9fb7433-f569-6a45-4b98-f48b996f5981,_Player,_)
+THEN 
+SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 0);
+SetTag(_Player, (TAG)PTM_PERCEPTIONCHECK_TAVERNBUTTON_ac6126c5-882b-418d-a307-aa007962214a);
+
+// Perception check if player enters eventtrigger 
 IF 
-EnteredTrigger(_Player, (TRIGGER)Tavern_Button_BoxTrigger_294c4e93-c08f-4d4a-934f-9118bd022286)
+EnteredTrigger(_Player, (TRIGGER)Tavern_Button_EventTrigger_f8bedf98-d9fe-470d-b4dc-ae579bd44d23)
 AND
 DB_Players(_Player)
+AND
+IsTagged(_Player, (TAG)PTM_PERCEPTIONCHECK_TAVERNBUTTON_ac6126c5-882b-418d-a307-aa007962214a, 0)
 THEN
-SetCanInteract((ITEM)Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, 1);
+SetTag(_Player, (TAG)PTM_PERCEPTIONCHECK_TAVERNBUTTON_ac6126c5-882b-418d-a307-aa007962214a);
 RequestPassiveRoll(_Player, Tavern_Door_Button_baad8590-056a-4e12-9d9d-201d15051a21, "Passive", "Perception", (DIFFICULTYCLASS)HiddenPerception_Trivial_7d16b9fd-d3c3-4693-9d50-ae44b962b4c4, 0, "PTM_TavernButtonPerceptionCheck");
 
 // Result handling
